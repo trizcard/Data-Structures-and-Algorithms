@@ -1,6 +1,4 @@
 #include "binaryTree.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 binaryTree* create(){
     binaryTree *bt = (binaryTree*) malloc(sizeof(binaryTree));
@@ -9,7 +7,7 @@ binaryTree* create(){
     }
     return bt;
 }
-void free(binaryTree *bt){
+void destroy(binaryTree *bt){
     if(bt != NULL){
         freeNode(*bt);
         free(bt);
@@ -26,7 +24,7 @@ void freeNode(node *n){
     free(n);
 }
 
-int insert(binaryTree *bt, DATA value){
+int insertTree(binaryTree *bt, DATA value){
     if(bt == NULL){ // if tree is not created yet or is already freed returns ERROR
         return -1;
     }
@@ -70,7 +68,7 @@ int insert(binaryTree *bt, DATA value){
         return 1; // sucess
     }
 }
-int remove(binaryTree *bt, DATA value){
+int removeTree(binaryTree *bt, DATA value){
     if(bt == NULL){ // if tree is not created yet or is already freed returns ERROR
         return -1;
     }
@@ -87,7 +85,7 @@ int remove(binaryTree *bt, DATA value){
             if (*bt == currentNode){
                 *bt = removeNode(currentNode);
             }
-            else if (previousNode->left == value){
+            else if (previousNode->left->info == value){
                 previousNode->left = removeNode(currentNode);
             }
             else{
