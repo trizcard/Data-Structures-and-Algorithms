@@ -16,7 +16,7 @@ int main(){
             printf("Already on the tree\n");
             break;
         default:
-            printf("Insertion Sucess");
+            printf("Insertion Sucess\n");
             break;
         }
     }
@@ -34,7 +34,7 @@ int main(){
             printf("Not on the tree\n");
             break;
         default:
-            printf("Remotion Sucess");
+            printf("Remotion Sucess\n");
             break;
         }
     }

@@ -68,6 +68,7 @@ int insertTree(binaryTree *bt, DATA value){
         return 1; // sucess
     }
 }
+
 int removeTree(binaryTree *bt, DATA value){
     if(bt == NULL){ // if tree is not created yet or is already freed returns ERROR
         return -1;
@@ -85,7 +86,7 @@ int removeTree(binaryTree *bt, DATA value){
             if (*bt == currentNode){
                 *bt = removeNode(currentNode);
             }
-            else if (previousNode->left->info == value){
+            else if (previousNode->left == currentNode){
                 previousNode->left = removeNode(currentNode);
             }
             else{
