@@ -132,7 +132,31 @@ node* removeNode(node* removedNode){
     return (secondNode);
 }
 
-int search(binaryTree *bt, DATA value); // returns -1 if error, 0 if not found, 1 if found
+int search(binaryTree *bt, DATA value){
+    if(bt == NULL){ // if tree is not created yet or is already freed returns ERROR
+        return -1;
+    }
+
+    if(*bt == NULL){ // if the tree is empty, return that value does not exist
+        return 0;
+    }
+    
+    node *currentNode = *bt;
+
+    while(currentNode != NULL){
+        if (currentNode->info == value){
+            return 1;
+        }
+        else if (value < currentNode->info){
+            currentNode = currentNode->left;
+        }
+        else{
+            currentNode = currentNode->right;
+        }
+    }
+    
+    return 0;
+}
 int isEmpty(binaryTree *bt); // returns -1 if error, 0 if not empty, 1 if empty
 int size(binaryTree *bt); // returns -1 if error, else the size of the tree
 int height(binaryTree *bt); // returns -1 if error, else the height of the tree

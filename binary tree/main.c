@@ -38,5 +38,23 @@ int main(){
             break;
         }
     }
+
+    // find a number on the tree
+    printf("\nWanted value: ");
+    int value, found;
+    scanf("%d", &value);
+    found = search(bt, value);
+    switch (found){
+        case 0:
+            printf("Not found\n");
+            break;
+        case 1:
+            printf("Found!\n");
+            break;
+        default:
+            printf("Error!\n");
+            break;
+    }
+
     destroy(bt);
 }
