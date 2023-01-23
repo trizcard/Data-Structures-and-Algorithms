@@ -56,5 +56,18 @@ int main(){
             break;
     }
 
+    // size of the tree
+    int sizeTree;
+    sizeTree = size(bt);
+    printf ("\nThe size of the tree is %d\n", sizeTree);
+
+    // height of the tree
+    int heightTree;
+    heightTree = height(bt);
+    printf ("\nThe height of the tree is %d\n", heightTree);
+
+    printPreOrder(*bt);
+    printInOrder(*bt);
+    printPostOrder(*bt);
     destroy(bt);
 }

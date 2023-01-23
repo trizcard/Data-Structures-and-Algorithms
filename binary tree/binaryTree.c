@@ -157,10 +157,92 @@ int search(binaryTree *bt, DATA value){
     
     return 0;
 }
-int isEmpty(binaryTree *bt); // returns -1 if error, 0 if not empty, 1 if empty
-int size(binaryTree *bt); // returns -1 if error, else the size of the tree
-int height(binaryTree *bt); // returns -1 if error, else the height of the tree
+int isEmpty(binaryTree *bt){
+    if (bt == NULL){
+        return -1;
+    }
+    if (*bt == NULL){
+        return 1;
+    }
+    return 0;
+}
+int sizeRec(node *node){
+    int size = 0;
+    if(node->left != NULL){
+        size += sizeRec(node->left);
+    }
+    if (node->right != NULL){
+        size += sizeRec(node->right);
+    }
+    size++;
+    return size;
+}
+int size(binaryTree *bt){
+    if (bt == NULL){
+        return -1;
+    }
+    if (*bt == NULL){
+        return 0;
+    }
+    int size;
+    size = sizeRec(*bt);
+}
+int heightRec(node *node){
+    int height = 0;
+    int heightLeft = 0, heightRight = 0;
+    if(node->left != NULL){
+        heightLeft = sizeRec(node->left);
+    }
+    if (node->right != NULL){
+        heightRight = sizeRec(node->right);
+    }
 
-void printPreOrder(binaryTree *bt); // prints the tree in pre-order
-void printInOrder(binaryTree *bt); // prints the tree in-order
-void printPostOrder(binaryTree *bt); // prints the tree in post-order
+    if (heightLeft > heightRight){
+        height += heightLeft;
+    }
+    else{
+        height += heightRight;
+    }
+    height++;
+    return height;
+}
+int height(binaryTree *bt){
+    if (bt == NULL){
+        return -1;
+    }
+    if (*bt == NULL){
+        return 0;
+    }
+    return heightRec(*bt);
+}
+
+void printPreOrder(node *node){
+    if(node == NULL){
+        return;
+    }
+    if (node != NULL){
+        printf("%d\n", node->info);
+        printPreOrder(node->left);
+        printPreOrder(node->right);
+    }
+}
+void printInOrder(node *node){
+    if(node == NULL){
+        return;
+    }
+    if (node != NULL){
+        printInOrder(node->left);
+        printf("%d\n", node->info);
+        printInOrder(node->right);
+    }
+}
+void printPostOrder(node *node){
+    if(node == NULL){
+        return;
+    }
+    if (node != NULL){
+        printPostOrder(node->left);
+        printPostOrder(node->right);
+        printf("%d\n", node->info);
+    }
+}
