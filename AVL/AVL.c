@@ -311,25 +311,6 @@ int size(AVL *bt){
     }
     return sizeRec(*bt);
 }
-int heightRec(node *node){
-    int height = 0;
-    int heightLeft = 0, heightRight = 0;
-    if(node->left != NULL){
-        heightLeft = sizeRec(node->left);
-    }
-    if (node->right != NULL){
-        heightRight = sizeRec(node->right);
-    }
-
-    if (heightLeft > heightRight){
-        height += heightLeft;
-    }
-    else{
-        height += heightRight;
-    }
-    height++;
-    return height;
-}
 int height(AVL *bt){
     if (bt == NULL){
         return -1;
@@ -337,7 +318,7 @@ int height(AVL *bt){
     if (*bt == NULL){
         return 0;
     }
-    return heightRec(*bt);
+    return ((*bt)->height + 1);
 }
 
 void printPreOrder(node *node){
